@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: openmanus-academic
+    runtime: python
+    plan: free
+    buildCommand: bash build.sh
+    startCommand: bash start.sh
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.11
+      - key: ACADEMIC_API_KEY
+        sync: false
+      - key: OPENMANUS_API_KEY
+        sync: false
+      - key: OPENMANUS_MODEL
+        value: gpt-4o-mini
+      - key: OPENMANUS_BASE_URL
+        value: https://api.openai.com/v1
+      - key: OPENMANUS_MAX_TOKENS
+        value: "8192"
+      - key: OPENMANUS_TEMPERATURE
+        value: "0.0"
+      - key: OPENMANUS_USE_SANDBOX
+        value: "false"
+      - key: OPENMANUS_DISABLE_BROWSER_USE
+        value: "true"
+      - key: PUBLIC_BASE_URL
+        sync: false
